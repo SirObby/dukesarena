@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgmf4m35ponbk"]
+
+[ext_resource type="Script" path="res://controllers/Scripts/fps_controller.gd" id="1_eckwc"]
+[ext_resource type="PackedScene" uid="uid://cd0n5gkrm2tai" path="res://duke-with-bones-without-plane.glb" id="1_ynwmc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eda4f"]
+height = 1.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vkq78"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER")]
+script = ExtResource("1_eckwc")
+CAMERA_CONTROLLER = NodePath("CameraController/Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_eda4f")
+
+[node name="Placeholder Mesh" type="MeshInstance3D" parent="CollisionShape3D"]
+visible = false
+mesh = SubResource("CapsuleMesh_vkq78")
+
+[node name="duke-with-bones-without-plane" parent="CollisionShape3D" instance=ExtResource("1_ynwmc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.612387, 0)
+
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.689525, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController"]
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/Camera3D"]
+update_mode = 1

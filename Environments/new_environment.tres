@@ -1,0 +1,13 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://cl5igyva0hwy"]
+
+[ext_resource type="Texture2D" uid="uid://d1ytuaaaxsxkt" path="res://autumn_field_puresky_4k.hdr" id="1_t33eq"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_luuu6"]
+panorama = ExtResource("1_t33eq")
+
+[sub_resource type="Sky" id="Sky_82g27"]
+sky_material = SubResource("PanoramaSkyMaterial_luuu6")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_82g27")
